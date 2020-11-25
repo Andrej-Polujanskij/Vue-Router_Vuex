@@ -1,0 +1,133 @@
+table {
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  th,
+  td {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+  th {
+    text-align: left;
+  }
+  thead {
+    th {
+      background-color: $purple;
+      font-weight: 700;
+    }
+  }
+  tbody {
+    tr {
+      transition: ease 0.2s;
+      @media all and (min-width: 900px) {
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.3);
+        }
+      }
+    }
+    td {
+      position: relative;
+      transition: ease 0.2s;
+      cursor: pointer;
+      @media all and (min-width: 900px) {
+        &:hover {
+          color: $purple;
+          background-color: rgba(255, 255, 255, 0.5);
+          &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+            transition: ease 0.2s;
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-table {
+  @media all and (max-width: 900px) {
+    &__head {
+      display: none;
+    }
+    &__body {
+      tr {
+        border-bottom: 1px solid transparent;
+      }
+      td {
+        display: block;
+        @media all and (max-width: 450px) {
+          text-align: center;
+        }
+        &::before {
+          content: attr(data-title);
+          text-transform: uppercase;
+          display: inline-block;
+          text-align: right;
+          width: 30%;
+          min-width: 150px;
+          padding: 15px;
+          margin: -15px 15px -15px -15px;
+          background-color: $purple;
+          font-weight: 700;
+          @media all and (max-width: 450px) {
+            width: 60%;
+            margin: 0 auto 15px auto;
+            text-align: center;
+            display: block;
+            padding: 8px 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+table.single-user-table {
+  tr {
+    @media all and (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+    }
+    th {
+      background-color: $purple;
+      @media all and (max-width: 768px) {
+        text-align: center;
+      }
+    }
+    td {
+      @media all and (max-width: 768px) {
+        text-align: center;
+      }
+    }
+  }
+  .sub-table {
+    @media all and (max-width: 450px) {
+      display: flex;
+    }
+    tr {
+      display: flex;
+      @media all and (max-width: 768px) {
+        flex-direction: row;
+        width: 100%;
+        @media all and (max-width: 450px) {
+          flex-direction: column;
+        }
+      }
+      th,
+      td {
+        width: 25%;
+        @media all and (max-width: 450px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
